@@ -1,0 +1,24 @@
+#Portainer
+portainer.example.duckdns.org {
+    reverse_proxy 192.168.1.100:9000
+}
+
+#Pihole
+pi.example.duckdns.org {
+    reverse_proxy 192.168.1.100:8880
+}
+
+#Jellyfin
+jelly.example.duckdns.org {
+    reverse_proxy 192.168.1.100:8096
+}
+
+#Wgeasy
+wg.example.duckdns.org {
+    reverse_proxy 192.168.1.100:51821
+}
+
+#Immich
+immich.example.duckdns.org {
+    reverse_proxy 192.168.1.100:2283
+}
