@@ -1,0 +1,15 @@
+services:
+  jellyfin:
+    image: jellyfin/jellyfin:latest
+    container_name: jellyfin
+    user: "${UID:-1000}:${GID:-1000}"
+    network_mode: "host"
+    volumes:
+      - jellyfin_config:/config
+      - jellyfin_cache:/cache
+      - /home/eros/media:/media
+    restart: unless-stopped
+
+volumes:
+  jellyfin_config:
+  jellyfin_cache:
