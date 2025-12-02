@@ -1,6 +1,3 @@
-volumes:
-  etc_wireguard:
-
 services:
   wg-easy:
     environment:
@@ -8,21 +5,29 @@ services:
     #  - PORT=51821
     #  - HOST=0.0.0.0
       - INSECURE=true
+      - WG_HOST=90.71.170.173
 
     image: ghcr.io/wg-easy/wg-easy:15
     container_name: wg-easy
-    network_mode: "host"
+   #network_mode: "host"
     volumes:
       - etc_wireguard:/etc/wireguard
       - /lib/modules:/lib/modules:ro
-#    ports:
-#      - "51820:51820/udp"
-#      - "51821:51821/tcp"
+    ports:
+      - "51820:51820/udp"
+      - "51821:51821/tcp"
     restart: unless-stopped
     cap_add:
       - NET_ADMIN
       - SYS_MODULE
       # - NET_RAW # ⚠️ Uncomment if using Podman
+    networks:
+      - wg_pihole
+
+volumes:
+  etc_wireguard:
+
 networks:
   wg_pihole:
     external: true
+
